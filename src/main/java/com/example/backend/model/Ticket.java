@@ -2,21 +2,29 @@ package com.example.backend.model;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
+import java.util.Date;
+
 @Entity
 
 public class Ticket {
 
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int ticketID;
-    private int order_date;
+    private LocalDate order_date;
     private double ticket_price;
     private int seatID;
     private int phoneNumber;
 
-    @OneToOne
-    @JoinColumn(name = "seat_id", referencedColumnName = "seatId", nullable = false)
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "seat_id", referencedColumnName = "seatId")
     private Seat seat;
+
+    @ManyToOne
+    @JoinColumn(name = "movieplan_id", nullable = false)
+    private MoviePlan moviePlan;
+
 
     public int getTicketID() {
         return ticketID;
@@ -26,12 +34,20 @@ public class Ticket {
         this.ticketID = ticketID;
     }
 
-    public int getOrder_date() {
+    public LocalDate getOrder_date() {
         return order_date;
     }
 
-    public void setOrder_date(int order_date) {
+    public void setOrder_date(LocalDate order_date) {
         this.order_date = order_date;
+    }
+
+    public Seat getSeat() {
+        return seat;
+    }
+
+    public void setSeat(Seat seat) {
+        this.seat = seat;
     }
 
     public double getTicket_price() {
