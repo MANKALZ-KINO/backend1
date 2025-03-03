@@ -8,7 +8,6 @@ import jakarta.persistence.Id;
 @Entity
 public class Movie {
     @Id
-
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long movieId;
     private String genre;
