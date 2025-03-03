@@ -13,10 +13,20 @@ public class Employee {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    private String name;
+
     @ManyToOne
     @JoinColumn(name = "cinema_id")
     private Cinema cinema;
 
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public Long getEmployeeId() {
         return employeeId;
