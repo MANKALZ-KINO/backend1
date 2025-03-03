@@ -12,7 +12,7 @@ public class Theater {
 
     private String theaterName;
     @ManyToOne
-    @JoinColumn(name = "cinema_id")
+    @JoinColumn(name = "cinema_id", referencedColumnName = "cinemaId", nullable = false)
     private Cinema cinema;
 
     @OneToMany(mappedBy = "theater", cascade = CascadeType.ALL)
