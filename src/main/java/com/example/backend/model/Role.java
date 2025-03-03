@@ -4,5 +4,5 @@ public enum Role {
     ADMIN,
     SALES,
     MOVIEOPERATOR,
-    CLEANER;
+    CLEANER
 }

@@ -1,27 +1,25 @@
 package com.example.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Cinema {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
+
     private Long cinemaId;
 
     private String name;
     private String address;
-
-    @OneToMany(mappedBy = "cinema", cascade = CascadeType.ALL)
-    private List<Theater> theaters;
-
-    @OneToMany(mappedBy = "cinema", cascade = CascadeType.ALL)
-    private List<Employee> employees;
-
-    public Cinema() {
-
-    }
+    //Jeg er den passive part – kig på region i Kommune for at finde relationen
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cinema")
+    @JsonBackReference
+    private Set<Employee> employees = new HashSet<>();
 
     public Long getCinemaId() {
         return cinemaId;
