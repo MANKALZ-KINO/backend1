@@ -13,12 +13,11 @@ public class Employee {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    private String name;
-
     @ManyToOne
-    @JoinColumn(name = "cinema_id")
+    @JoinColumn(name = "cinema_id", referencedColumnName = "cinemaId", nullable = false)
     private Cinema cinema;
 
+    private String name;
 
     public String getName() {
         return name;

@@ -15,11 +15,11 @@ public class MoviePlan {
     private ShowNumber showNumber;
 
     @ManyToOne
-    @JoinColumn(name = "movie_id")
+    @JoinColumn(name = "movie_id", referencedColumnName = "movieId", nullable = false)
     private Movie movie;
 
     @ManyToOne
-    @JoinColumn(name = "theater_id")
+    @JoinColumn(name = "theater_id", referencedColumnName = "theaterId", nullable = false)
     private Theater theater;
 
     public Long getMoviePlanId() {
