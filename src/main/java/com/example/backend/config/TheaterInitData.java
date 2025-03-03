@@ -21,7 +21,7 @@ public class TheaterInitData implements CommandLineRunner {
     private ICinemaRepository iCinemaRepository;
 
     @Override
-    @Transactional // Sikrer, at alt kører i en transaktion
+    @Transactional // Sikrer at alt kører i en transaktion
     public void run(String... args) throws Exception {
         if (iTheaterRepository.count() == 0) { // Undgå dubletter
 
