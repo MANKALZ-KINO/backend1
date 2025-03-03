@@ -19,7 +19,7 @@ public class Cinema {
     //Jeg er den passive part – kig på region i Kommune for at finde relationen
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cinema")
     @JsonBackReference
-    private Set<Employee> kommuner = new HashSet<>();
+    private Set<Employee> employees = new HashSet<>();
 
     public Long getCinemaId() {
         return cinemaId;

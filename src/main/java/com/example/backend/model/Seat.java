@@ -11,7 +11,7 @@ public class Seat {
     private int rowNumber;
 
     @ManyToOne
-    @JoinColumn(name = "theater_id", referencedColumnName = "theatherId", nullable = false)
+    @JoinColumn(name = "theater_id", referencedColumnName = "theaterId", nullable = false)
     private Theater theater;
 
 

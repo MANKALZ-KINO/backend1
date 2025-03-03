@@ -2,7 +2,6 @@ package com.example.backend.model;
 
 import jakarta.persistence.*;
 
-import javax.management.relation.Role;
 
 @Entity
 public class Employee {
