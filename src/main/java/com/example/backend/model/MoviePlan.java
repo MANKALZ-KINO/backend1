@@ -3,6 +3,7 @@ package com.example.backend.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 public class MoviePlan {
@@ -21,6 +22,17 @@ public class MoviePlan {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "theater_id", referencedColumnName = "theaterId", nullable = false)
     private Theater theater;
+
+    @OneToMany(mappedBy = "moviePlan", cascade = CascadeType.ALL)
+    private List<Ticket> tickets;
+
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
+
+    public void setTickets(List<Ticket> tickets) {
+        this.tickets = tickets;
+    }
 
     public Long getMoviePlanId() {
         return moviePlanId;

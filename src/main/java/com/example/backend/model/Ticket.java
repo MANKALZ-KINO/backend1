@@ -10,7 +10,7 @@ import java.util.Date;
 public class Ticket {
 
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int ticketID;
     private LocalDate order_date;
     private double ticket_price;
@@ -20,6 +20,11 @@ public class Ticket {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "seat_id", referencedColumnName = "seatId")
     private Seat seat;
+
+    @ManyToOne
+    @JoinColumn(name = "movieplan_id", nullable = false)
+    private MoviePlan moviePlan;
+
 
     public int getTicketID() {
         return ticketID;
