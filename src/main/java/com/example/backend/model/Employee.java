@@ -12,7 +12,7 @@ public class Employee {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cinema_id", referencedColumnName = "cinemaId", nullable = false)
     private Cinema cinema;
 

@@ -14,11 +14,11 @@ public class MoviePlan {
     @Enumerated(EnumType.STRING)
     private ShowNumber showNumber;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "movie_id", referencedColumnName = "movieId", nullable = false)
     private Movie movie;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "theater_id", referencedColumnName = "theaterId", nullable = false)
     private Theater theater;
 

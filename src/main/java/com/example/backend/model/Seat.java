@@ -7,8 +7,8 @@ public class Seat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long seatId;
-    private int seatNumber;
-    private int rowNumber;
+    private int seatNumb;
+    private int rowNum;
 
     @ManyToOne
     @JoinColumn(name = "theater_id", referencedColumnName = "theaterId", nullable = false)
@@ -23,20 +23,21 @@ public class Seat {
         this.seatId = seatId;
     }
 
-    public int getSeatNumber() {
-        return seatNumber;
+    public int getSeatNumb() {
+        return seatNumb;
     }
 
-    public void setSeatNumber(int seatNumber) {
-        this.seatNumber = seatNumber;
+
+    public void setSeatNumb(int seatNumb) {
+        this.seatNumb = seatNumb;
     }
 
-    public int getRowNumber() {
-        return rowNumber;
+    public int getRowNum() {
+        return rowNum;
     }
 
-    public void setRowNumber(int rowNumber) {
-        this.rowNumber = rowNumber;
+    public void setRowNum(int rowNum) {
+        this.rowNum = rowNum;
     }
 
     public Theater getTheater() {
