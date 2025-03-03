@@ -19,7 +19,7 @@ public class TheaterInitData implements CommandLineRunner {
 
     @Autowired
     private ICinemaRepository iCinemaRepository;
-
+//slet mig
     @Override
     @Transactional // Sikrer, at alt kører i en transaktion
     public void run(String... args) throws Exception {
