@@ -10,8 +10,10 @@ public class Theater {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long theaterId;
 
+    private int capacity;
+
     private String theaterName;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cinema_id", referencedColumnName = "cinemaId", nullable = false)
     private Cinema cinema;
 
@@ -49,5 +51,13 @@ public class Theater {
 
     public void setSeats(List<Seat> seats) {
         this.seats = seats;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
     }
 }
