@@ -27,6 +27,13 @@ jobs:
         java-version: '21'
         distribution: 'temurin'
         cache: maven
+
+    - name: Set environment variables
+      run: echo "JDBCUrl=${{ secrets.JDBC_URL }}" 
+           echo "JDBCUsername=${{ secrets.JDBC_USERNAME }}" 
+           echo "JDBCPassword=${{ secrets.JDBC_PASSWORD }}" 
+
+    
     - name: Build with Maven
       run: mvn -B package --file pom.xml
 
