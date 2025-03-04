@@ -10,6 +10,7 @@ public class Seat {
     private int seatNumb;
     private int rowNum;
 
+
     @ManyToOne
     @JoinColumn(name = "theater_id", referencedColumnName = "theaterId", nullable = false)
     private Theater theater;
