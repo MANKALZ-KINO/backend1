@@ -1,10 +1,12 @@
 package com.example.backend.controllers;
 
+import com.example.backend.model.Movie;
 import com.example.backend.model.Ticket;
 import com.example.backend.repositories.IMoviePlanRepository;
 import com.example.backend.repositories.ITicketRepository;
 import com.example.backend.service.TicketService;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,16 +32,13 @@ public class TicketController {
         return ticketRepository.findAll();
     }
 
-
-    @PostMapping
-    public ResponseEntity<Ticket> createTicket(@RequestBody Ticket ticket) {
-        Ticket savedTicket = ticketRepository.save(ticket);
-        return ResponseEntity.ok(savedTicket);
+    @PostMapping("/createTicket")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Ticket createTicket(@RequestBody Ticket ticket) {
+        return ticketRepository.save(ticket); //opda
     }
 
-
     // UPDATE
-    
     @PutMapping("/{id}")
     public ResponseEntity<Ticket> updateTicket(@PathVariable int id, @RequestBody Ticket updatedTicket) {
         if (!ticketRepository.existsById(id)) {
@@ -51,7 +50,7 @@ public class TicketController {
     }
 
     //DELETE via id
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteTicket(@PathVariable int id) {
         if (!ticketRepository.existsById(id)) {
             return ResponseEntity.notFound().build();
@@ -60,5 +59,18 @@ public class TicketController {
         return ResponseEntity.ok("Ticket deleted successfully");
     }
 
+//    @PostMapping("/purchase")
+//    public ResponseEntity<Ticket> purchaseTicket(
+//            @RequestParam Long moviePlanId,
+//            @RequestParam int seatID,
+//            @RequestParam double ticketPrice,
+//            @RequestParam int phoneNumber) {
+//        try {
+//            Ticket ticket = ticketService.purchaseTicket(moviePlanId, seatID, ticketPrice, phoneNumber);
+//            return ResponseEntity.ok(ticket);
+//        } catch (RuntimeException e) {
+//            return ResponseEntity.badRequest().body(null);
+//        }
+//    }
 
 }

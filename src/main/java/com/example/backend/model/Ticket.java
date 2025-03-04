@@ -1,6 +1,7 @@
 package com.example.backend.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -13,10 +14,12 @@ public class Ticket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int ticketID;
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate order_date;
     private double ticket_price;
     private int seatID;
     private int phoneNumber;
+
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "seat_id", referencedColumnName = "seatId")
