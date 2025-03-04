@@ -39,7 +39,6 @@ public class TicketController {
 
 
     // UPDATE
-    
     @PutMapping("/{id}")
     public ResponseEntity<Ticket> updateTicket(@PathVariable int id, @RequestBody Ticket updatedTicket) {
         if (!ticketRepository.existsById(id)) {
@@ -58,6 +57,17 @@ public class TicketController {
         }
         ticketRepository.deleteById(id);
         return ResponseEntity.ok("Ticket deleted successfully");
+    }
+
+    @PostMapping("/purchase")
+    public ResponseEntity<Ticket> purchaseTicket(@RequestParam Long moviePlanId, @RequestParam String seatNumber,
+            @RequestParam String customerName) {
+        try {
+            Ticket ticket = ticketService.purchaseTicket(moviePlanId, seatNumber, customerName);
+            return ResponseEntity.ok(ticket);
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(null);
+        }
     }
 
 
