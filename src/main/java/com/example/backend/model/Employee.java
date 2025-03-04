@@ -18,6 +18,13 @@ public class Employee {
 
     private String name;
 
+    private String encodedPassword;
+
+    public UserProfile readUserProfile(String username) {
+        String sql = "SELECT * FROM user_profile WHERE username = ?";
+        return jdbcTemplate.queryForObject(sql, UserProfile.ROW_MAPPER, username);
+    }
+
     public String getName() {
         return name;
     }
@@ -49,4 +56,13 @@ public class Employee {
     public void setCinema(Cinema cinema) {
         this.cinema = cinema;
     }
+
+    public String getEncodedPassword() {
+        return encodedPassword;
+    }
+
+    public void setEncodedPassword(String encodedPassword) {
+        this.encodedPassword = encodedPassword;
+    }
+
 }
