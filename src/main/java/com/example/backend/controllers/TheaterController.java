@@ -28,15 +28,9 @@ public class TheaterController {
         return theaterRepository.findAll();
     }
 
-    //GET
-    @GetMapping("/movieplans/{id}")
+    @GetMapping("/{id}")
     public List<Theater> theaterById(@PathVariable Long id) {
-        List<Theater> moviePlanForMovie = new ArrayList<>();
-        for (Theater t : theaterRepository.findAll())
-            if (t.getTheaterId() == id){
-                moviePlanForMovie.add(t);
-            }
-        return moviePlanForMovie;
+        return theaterRepository.findByTheaterId(id);
     }
 
 
