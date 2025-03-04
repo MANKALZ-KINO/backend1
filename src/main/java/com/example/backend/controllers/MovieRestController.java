@@ -25,9 +25,9 @@ public class MovieRestController {
     public List<Movie> movies() {
         return iMovieRepository.findAll();
     }
-    @GetMapping("students/{name}") public List<Movie> allMoviesByName(@PathVariable String movieName) {
-        return iMovieRepository.findAllBymovieName(movieName);
+    @GetMapping("/movies/{name}") public List<Movie> allMoviesByName(@PathVariable String name) {
+        return iMovieRepository.findAllBymovieName(name);
     }
-
+//hejeh
 
 }
