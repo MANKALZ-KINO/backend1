@@ -1,10 +1,12 @@
 package com.example.backend.controllers;
 
+import com.example.backend.model.Movie;
 import com.example.backend.model.Ticket;
 import com.example.backend.repositories.IMoviePlanRepository;
 import com.example.backend.repositories.ITicketRepository;
 import com.example.backend.service.TicketService;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,13 +32,11 @@ public class TicketController {
         return ticketRepository.findAll();
     }
 
-
-    @PostMapping
-    public ResponseEntity<Ticket> createTicket(@RequestBody Ticket ticket) {
-        Ticket savedTicket = ticketRepository.save(ticket);
-        return ResponseEntity.ok(savedTicket);
+    @PostMapping("/createTicket")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Ticket createTicket(@RequestBody Ticket ticket) {
+        return ticketRepository.save(ticket); //opda
     }
-
 
     // UPDATE
     @PutMapping("/{id}")
