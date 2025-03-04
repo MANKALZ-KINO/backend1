@@ -39,7 +39,6 @@ public class TicketController {
 
 
     // UPDATE
-    
     @PutMapping("/{id}")
     public ResponseEntity<Ticket> updateTicket(@PathVariable int id, @RequestBody Ticket updatedTicket) {
         if (!ticketRepository.existsById(id)) {
