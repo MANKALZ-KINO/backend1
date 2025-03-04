@@ -34,7 +34,7 @@ public class MovieRestController {
         return "Du er i roden";
     }
 
-    //GET
+    //GETt
     @GetMapping("/movies")
     public List<Movie> movies() {
         return iMovieRepository.findAll();
