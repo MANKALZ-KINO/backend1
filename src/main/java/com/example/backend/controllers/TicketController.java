@@ -1,7 +1,5 @@
 package com.example.backend.controllers;
 
-import com.example.backend.model.Movie;
-import com.example.backend.model.MoviePlan;
 import com.example.backend.model.Ticket;
 import com.example.backend.repositories.IMoviePlanRepository;
 import com.example.backend.repositories.ITicketRepository;
@@ -11,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/ticket")
