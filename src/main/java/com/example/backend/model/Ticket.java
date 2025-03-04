@@ -13,7 +13,7 @@ public class Ticket {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int ticketID;
+    private Long ticketID;
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate order_date;
     private double ticket_price;
@@ -39,11 +39,11 @@ public class Ticket {
         this.moviePlan = moviePlan;
     }
 
-    public int getTicketID() {
+    public Long getTicketID() {
         return ticketID;
     }
 
-    public void setTicketID(int ticketID) {
+    public void setTicketID(Long ticketID) {
         this.ticketID = ticketID;
     }
 
