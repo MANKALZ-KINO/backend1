@@ -27,14 +27,40 @@ public class TicketController {
         this.moviePlanRepository = moviePlanRepository;
     }
 
-    // GET: Hent alle billetter
+    // GET: Hent alle
     @GetMapping("/all")
     public List<Ticket> getAllTickets() {
         return ticketRepository.findAll();
     }
 
 
+    @PostMapping
+    public ResponseEntity<Ticket> createTicket(@RequestBody Ticket ticket) {
+        Ticket savedTicket = ticketRepository.save(ticket);
+        return ResponseEntity.ok(savedTicket);
+    }
 
+
+    // UPDATE
+    @PutMapping("/{id}")
+    public ResponseEntity<Ticket> updateTicket(@PathVariable int id, @RequestBody Ticket updatedTicket) {
+        if (!ticketRepository.existsById(id)) {
+            return ResponseEntity.notFound().build();
+        }
+        updatedTicket.setTicketID(id); // Sikrer at ID'et bliver det samme
+        Ticket savedTicket = ticketRepository.save(updatedTicket);
+        return ResponseEntity.ok(savedTicket);
+    }
+
+    //DELETE via id
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteTicket(@PathVariable int id) {
+        if (!ticketRepository.existsById(id)) {
+            return ResponseEntity.notFound().build();
+        }
+        ticketRepository.deleteById(id);
+        return ResponseEntity.ok("Ticket deleted successfully");
+    }
 
 
 }
