@@ -45,7 +45,7 @@ public class MoviePlantInitData implements CommandLineRunner {
 
             // Opret filmvisninger
             MoviePlan moviePlan1 = new MoviePlan();
-            moviePlan1.setDate(LocalDate.now());
+            moviePlan1.setDate(LocalDate.of(2025, 3, 4));
             moviePlan1.setShowNumber(ShowNumber.MORNING);
             moviePlan1.setMovie(movie);
             moviePlan1.setTheater(theater);
