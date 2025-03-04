@@ -17,8 +17,9 @@ public class Movie {
     private int duration;
 
 
-    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL, orphanRemoval = true) //orphanremoval betyder at hvis en MoviePlan fjernes fra moviePlans-listen i Movie, slettes den automatisk fra databasen
-    private List<MoviePlan> moviePlans; //cascade betyder at alle ændringer på Movie også gælder for MoviePlan
+    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL,orphanRemoval = true)
+    @JsonIgnore
+    private List<MoviePlan> moviePlans;
 
     public List<MoviePlan> getMoviePlans() {
         return moviePlans;

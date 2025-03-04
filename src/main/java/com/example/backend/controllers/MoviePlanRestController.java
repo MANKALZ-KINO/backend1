@@ -31,14 +31,13 @@ public class MoviePlanRestController {
     }
     //DELETE
     @DeleteMapping("/movieplan/{id}")
-    public ResponseEntity<String> deleteStudent(@PathVariable Long id){
-        Optional<MoviePlan> orgStudent = iMoviePlanRepository.findById(id);
-        if (orgStudent.isPresent()) {
+    public ResponseEntity<String> deleteMoviePlan(@PathVariable Long id) {
+        Optional<MoviePlan> moviePlan = iMoviePlanRepository.findById(id);
+        if (moviePlan.isPresent()) {
             iMoviePlanRepository.deleteById(id);
-            return ResponseEntity.ok("movieplan deleted");
-        } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("movieplan not found and could not be deleted");
+            return ResponseEntity.ok("MoviePlan with id " + id + " deleted successfully.");
         }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("MoviePlan not found.");
     }
 
 
