@@ -1,6 +1,5 @@
 package com.example.backend.controllers;
 
-import com.example.backend.model.Movie;
 import com.example.backend.model.Ticket;
 import com.example.backend.repositories.IMoviePlanRepository;
 import com.example.backend.repositories.ITicketRepository;

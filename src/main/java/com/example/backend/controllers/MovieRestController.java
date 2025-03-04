@@ -21,14 +21,6 @@ public class MovieRestController {
     @Autowired
     IMovieRepository iMovieRepository;
 
-    @Autowired
-    IMoviePlanRepository iMoviePlanRepository;
-
-    @Autowired
-    MoviePlanService moviePlanService;
-
-    @Autowired
-    ITicketRepository iTicketRepository;
 
     @GetMapping("/")
     public String detteErRoden() {
