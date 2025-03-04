@@ -43,12 +43,24 @@ public class MovieRestController {
         return iMovieRepository.findAllBymovieName(name);
     }
     //POST
-    @PostMapping("/movie")
+    @PostMapping("/createmovie")
     @ResponseStatus(HttpStatus.CREATED)
     public Movie postMovie(@RequestBody Movie movie) {
         System.out.println("indsætter ny movie!!");
         System.out.println(movie);
         return iMovieRepository.save(movie); //opda
+    }
+
+    //PUT
+    @PutMapping("/updatemovie")
+    public ResponseEntity<Movie> updateStudent(@RequestBody Movie movie) {
+        Optional<Movie> orgMovie =iMovieRepository.findById(movie.getMovieId());
+        if (orgMovie.isPresent()) {
+            iMovieRepository.save(movie);
+            return new ResponseEntity<>(movie, HttpStatus.OK); //body er JSON
+        } else {
+            return new ResponseEntity<>(new Movie(), HttpStatus.NOT_FOUND);
+        }
     }
 
 
