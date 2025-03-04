@@ -1,12 +1,15 @@
 package com.example.backend.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class Movie {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long movieId;
@@ -14,6 +17,19 @@ public class Movie {
     private String movieName;
     private int ageLimit;
     private int duration;
+
+
+    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL,orphanRemoval = true)
+    @JsonIgnore
+    private List<MoviePlan> moviePlans;
+
+    public List<MoviePlan> getMoviePlans() {
+        return moviePlans;
+    }
+
+    public void setMoviePlans(List<MoviePlan> moviePlans) {
+        this.moviePlans = moviePlans;
+    }
 
     public String getMovieName() {
         return movieName;
