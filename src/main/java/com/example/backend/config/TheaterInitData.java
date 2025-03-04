@@ -29,7 +29,7 @@ public class TheaterInitData implements CommandLineRunner {
                 Cinema newCinema = new Cinema();
                 newCinema.setName("Nordisk Film Biografer");
                 newCinema.setAddress("Gammel Kongevej 20, Frederiksberg");
-                return iCinemaRepository.save(newCinema); // Gemmer og gør den managed
+                return iCinemaRepository.save(newCinema); // Gemmer
             });
 
 

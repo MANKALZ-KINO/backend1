@@ -39,7 +39,7 @@ public class MovieInitData implements CommandLineRunner {
 
 
             iMovieRepository.saveAll(List.of(movie1, movie2, movie3));
-            iMovieRepository.flush(); // Sikrer at alle film bliver gemt korrekt og er managed
+            iMovieRepository.flush(); // Sikrer at alle film bliver gemt korrekt
 
             System.out.println("Init data: 3 movies added!");
         }

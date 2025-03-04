@@ -23,7 +23,7 @@ public class MoviePlantInitData implements CommandLineRunner {
     ITheaterRepository iTheaterRepository;
 
     @Autowired
-    ICinemaRepository iCinemaRepository; // ✅ Tilføjet Cinema repository
+    ICinemaRepository iCinemaRepository;
 
     @Override
     @Transactional
@@ -50,7 +50,7 @@ public class MoviePlantInitData implements CommandLineRunner {
                 Theater newTheater = new Theater();
                 newTheater.setTheaterName("Grand Hall");
                 newTheater.setCapacity(250);
-                newTheater.setCinema(cinema); // ✅ Sikrer, at theater har en cinema!
+                newTheater.setCinema(cinema);
                 return iTheaterRepository.save(newTheater);
             });
 

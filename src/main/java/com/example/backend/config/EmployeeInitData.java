@@ -38,12 +38,12 @@ public class EmployeeInitData implements CommandLineRunner {
 
             // Opret ansatte
             Employee employee1 = new Employee();
-            employee1.setName("John Doe");
+            employee1.setName("John");
             employee1.setRole(Role.ADMIN);
             employee1.setCinema(cinema);
 
             Employee employee2 = new Employee();
-            employee2.setName("Jane Smith");
+            employee2.setName("Jane");
             employee2.setRole(Role.SALES);
             employee2.setCinema(cinema);
 
