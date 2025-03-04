@@ -40,7 +40,7 @@ public class TicketInitData implements CommandLineRunner {
             }
 
             // Hent en eksisterende MoviePlan fra databasen
-            Optional<MoviePlan> optionalMoviePlan = iMoviePlanRepository.findById(1L); // Antager, at en MoviePlan med ID 1 findes
+            Optional<MoviePlan> optionalMoviePlan = iMoviePlanRepository.findById(1L); //L for long
 
             if (optionalMoviePlan.isEmpty()) {
                 System.out.println("Fejl: Ingen MoviePlan fundet! Billetter kan ikke oprettes.");
@@ -54,14 +54,14 @@ public class TicketInitData implements CommandLineRunner {
             ticket1.setTicket_price(120.50);
             ticket1.setPhoneNumber(12345678);
             ticket1.setSeat(seats.get(0));
-            ticket1.setMoviePlan(moviePlan); // ✅ Nu har billetten en MoviePlan
+            ticket1.setMoviePlan(moviePlan);
 
             Ticket ticket2 = new Ticket();
             ticket2.setOrder_date(LocalDate.now());
             ticket2.setTicket_price(99.99);
             ticket2.setPhoneNumber(87654321);
             ticket2.setSeat(seats.get(1));
-            ticket2.setMoviePlan(moviePlan); // ✅ Nu har billetten en MoviePlan
+            ticket2.setMoviePlan(moviePlan);
 
             iTicketRepository.save(ticket1);
             iTicketRepository.save(ticket2);
