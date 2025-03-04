@@ -1,5 +1,6 @@
 package com.example.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -19,12 +20,21 @@ public class Ticket {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "seat_id", referencedColumnName = "seatId")
+    @JsonBackReference
     private Seat seat;
 
     @ManyToOne
     @JoinColumn(name = "movieplan_id", nullable = false)
+    @JsonBackReference
     private MoviePlan moviePlan;
 
+    public MoviePlan getMoviePlan() {
+        return moviePlan;
+    }
+
+    public void setMoviePlan(MoviePlan moviePlan) {
+        this.moviePlan = moviePlan;
+    }
 
     public int getTicketID() {
         return ticketID;
