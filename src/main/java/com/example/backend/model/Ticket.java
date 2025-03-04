@@ -18,6 +18,7 @@ public class Ticket {
     private int seatID;
     private int phoneNumber;
 
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "seat_id", referencedColumnName = "seatId")
     @JsonBackReference

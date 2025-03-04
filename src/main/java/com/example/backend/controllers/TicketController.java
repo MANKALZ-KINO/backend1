@@ -50,7 +50,7 @@ public class TicketController {
     }
 
     //DELETE via id
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteTicket(@PathVariable int id) {
         if (!ticketRepository.existsById(id)) {
             return ResponseEntity.notFound().build();
@@ -59,16 +59,18 @@ public class TicketController {
         return ResponseEntity.ok("Ticket deleted successfully");
     }
 
-    @PostMapping("/purchase")
-    public ResponseEntity<Ticket> purchaseTicket(@RequestParam Long moviePlanId, @RequestParam String seatNumber,
-            @RequestParam String customerName) {
-        try {
-            Ticket ticket = ticketService.purchaseTicket(moviePlanId, seatNumber, customerName);
-            return ResponseEntity.ok(ticket);
-        } catch (RuntimeException e) {
-            return ResponseEntity.badRequest().body(null);
-        }
-    }
-
+//    @PostMapping("/purchase")
+//    public ResponseEntity<Ticket> purchaseTicket(
+//            @RequestParam Long moviePlanId,
+//            @RequestParam int seatID,
+//            @RequestParam double ticketPrice,
+//            @RequestParam int phoneNumber) {
+//        try {
+//            Ticket ticket = ticketService.purchaseTicket(moviePlanId, seatID, ticketPrice, phoneNumber);
+//            return ResponseEntity.ok(ticket);
+//        } catch (RuntimeException e) {
+//            return ResponseEntity.badRequest().body(null);
+//        }
+//    }
 
 }
