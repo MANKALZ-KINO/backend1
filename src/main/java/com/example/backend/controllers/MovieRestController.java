@@ -21,21 +21,13 @@ public class MovieRestController {
     @Autowired
     IMovieRepository iMovieRepository;
 
-    @Autowired
-    IMoviePlanRepository iMoviePlanRepository;
-
-    @Autowired
-    MoviePlanService moviePlanService;
-
-    @Autowired
-    ITicketRepository iTicketRepository;
 
     @GetMapping("/")
     public String detteErRoden() {
         return "Du er i roden";
     }
 
-    //GETt
+    //GET
     @GetMapping("/movies")
     public List<Movie> movies() {
         return iMovieRepository.findAll();
