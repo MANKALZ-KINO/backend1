@@ -26,5 +26,4 @@ public class MoviePlanRestController {
         return moviePlanForMovie;
     }
 
-
 }
