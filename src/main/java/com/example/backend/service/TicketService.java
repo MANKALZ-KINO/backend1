@@ -21,4 +21,16 @@ public class TicketService {
         this.moviePlanRepository = moviePlanRepository;
     }
 
+    //ved ikke om denne skal bruges
+    public int displayAgeWithinLimit(Ticket ticket) {
+        int ageLimit = ticket.getMoviePlan().getMovie().getAgeLimit();
+        return ageLimit;
+    }
+
+
+    //* public boolean isSeatAvailable(int seatId) {
+    // return ticketRepository.findBySeatID(seatId).isEmpty();
+    //}//*
+
+
 }

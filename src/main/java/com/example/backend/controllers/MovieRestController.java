@@ -6,6 +6,7 @@ import com.example.backend.repositories.IMoviePlanRepository;
 import com.example.backend.repositories.IMovieRepository;
 import com.example.backend.repositories.ITicketRepository;
 import com.example.backend.service.MoviePlanService;
+import com.example.backend.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +21,9 @@ public class MovieRestController {
 
     @Autowired
     IMovieRepository iMovieRepository;
+
+    @Autowired
+    MovieService movieService;
 
 
     @GetMapping("/")
