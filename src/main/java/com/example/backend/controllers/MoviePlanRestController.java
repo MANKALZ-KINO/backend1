@@ -1,6 +1,7 @@
 package com.example.backend.controllers;
 import com.example.backend.model.MoviePlan;
 import com.example.backend.repositories.IMoviePlanRepository;
+import com.example.backend.service.MoviePlanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,14 +17,18 @@ import java.util.Optional;
 @RestController
 public class MoviePlanRestController {
 
-    @Autowired
-    IMoviePlanRepository iMoviePlanRepository;
+
+    private final MoviePlanService moviePlanService;
+
+    public MoviePlanRestController(MoviePlanService moviePlanService) {
+        this.moviePlanService = moviePlanService;
+    }
 
     //GET
     @GetMapping("/movieplans/{id}")
     public List<MoviePlan> moviePlansWithMovieId(@PathVariable Long id) {
         List<MoviePlan> moviePlanForMovie = new ArrayList<>();
-        for (MoviePlan m : iMoviePlanRepository.findAll())
+        for (MoviePlan m : moviePlanService.moviePlansWithMovieId(id))
             if (m.getMovie().getMovieId() == id){
                 moviePlanForMovie.add(m);
             }
@@ -31,10 +36,10 @@ public class MoviePlanRestController {
     }
     //DELETE
     @DeleteMapping("/movieplan/{id}")
-    public ResponseEntity<String> deleteStudent(@PathVariable Long id){
-        Optional<MoviePlan> orgStudent = iMoviePlanRepository.findById(id);
-        if (orgStudent.isPresent()) {
-            iMoviePlanRepository.deleteById(id);
+    public ResponseEntity<String> deleteMoviePlan(@PathVariable Long id){
+        Optional<MoviePlan> orgMoviePlan = moviePlanService.movieplans(id);
+        if (orgMoviePlan.isPresent()) {
+            moviePlanService.deleteMovieById(id);
             return ResponseEntity.ok("movieplan deleted");
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("movieplan not found and could not be deleted");

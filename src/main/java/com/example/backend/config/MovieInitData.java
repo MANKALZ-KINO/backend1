@@ -1,6 +1,7 @@
 package com.example.backend.config;
 
 import com.example.backend.model.Movie;
+import com.example.backend.repositories.IMoviePlanRepository;
 import com.example.backend.repositories.IMovieRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +13,12 @@ import java.util.List;
 @Component
 public class MovieInitData implements CommandLineRunner {
 
-    @Autowired
-    IMovieRepository iMovieRepository;
+
+    private final IMovieRepository iMovieRepository;
+
+    public MovieInitData(IMovieRepository iMovieRepository) {
+        this.iMovieRepository = iMovieRepository;
+    }
 
     @Override
     @Transactional
@@ -39,7 +44,7 @@ public class MovieInitData implements CommandLineRunner {
 
 
             iMovieRepository.saveAll(List.of(movie1, movie2, movie3));
-            iMovieRepository.flush(); // Sikrer at alle film bliver gemt korrekt og er managed
+            iMovieRepository.flush(); // Sikrer at alle film bliver gemt korrekt
 
             System.out.println("Init data: 3 movies added!");
         }

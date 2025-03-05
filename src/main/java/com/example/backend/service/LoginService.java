@@ -5,9 +5,13 @@ import com.example.backend.repositories.IEmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class LoginService {
 
+    public LoginService(){
+
+    }
     @Autowired
     private IEmployeeRepository employeeRepository;
     private final String PASSWORD = "admin123";

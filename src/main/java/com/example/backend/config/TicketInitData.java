@@ -18,15 +18,15 @@ import java.util.Optional;
 @Component
 public class TicketInitData implements CommandLineRunner {
 
-    @Autowired
-    ITicketRepository iTicketRepository;
+    private final ITicketRepository iTicketRepository;
+    private final ISeatRepository iSeatRepository;
+    private final IMoviePlanRepository iMoviePlanRepository;
 
-    @Autowired
-    ISeatRepository iSeatRepository;
-
-    @Autowired
-    IMoviePlanRepository iMoviePlanRepository;
-
+    public TicketInitData(ITicketRepository iTicketRepository, ISeatRepository iSeatRepository, IMoviePlanRepository iMoviePlanRepository) {
+        this.iTicketRepository = iTicketRepository;
+        this.iSeatRepository = iSeatRepository;
+        this.iMoviePlanRepository = iMoviePlanRepository;
+    }
 
     @Override
     @Transactional
@@ -40,15 +40,16 @@ public class TicketInitData implements CommandLineRunner {
                 return;
             }
 
-            // Henter en eksisterende MoviePlan
-            Optional<MoviePlan> moviePlanOptional = iMoviePlanRepository.findById(1L);
-            if (moviePlanOptional.isEmpty()) {
-                System.out.println("Fejl: Ingen MoviePlan fundet! Opret MoviePlan først.");
+            // Hent en eksisterende MoviePlan fra databasen
+            Optional<MoviePlan> optionalMoviePlan = iMoviePlanRepository.findById(1L); //L for long
+
+            if (optionalMoviePlan.isEmpty()) {
+                System.out.println("Fejl: Ingen MoviePlan fundet! Billetter kan ikke oprettes.");
                 return;
             }
-            MoviePlan moviePlan = moviePlanOptional.get();
 
-            // Opret billetter
+            MoviePlan moviePlan = optionalMoviePlan.get();
+
             Ticket ticket1 = new Ticket();
             ticket1.setOrder_date(LocalDate.now());
             ticket1.setTicket_price(120.50);
@@ -65,8 +66,6 @@ public class TicketInitData implements CommandLineRunner {
 
             iTicketRepository.save(ticket1);
             iTicketRepository.save(ticket2);
-
-            System.out.println("Init data: Tickets added!");
         }
     }
 }
