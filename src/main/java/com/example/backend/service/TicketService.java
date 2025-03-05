@@ -16,8 +16,8 @@ public class TicketService {
     private final ITicketRepository ticketRepository;
     private final IMoviePlanRepository moviePlanRepository;
 
-    public TicketService(ITicketRepository iTicketRepository, IMoviePlanRepository moviePlanRepository) {
-        this.ticketRepository = iTicketRepository;
+    public TicketService(ITicketRepository ticketRepository, IMoviePlanRepository moviePlanRepository) {
+        this.ticketRepository = ticketRepository;
         this.moviePlanRepository = moviePlanRepository;
     }
 

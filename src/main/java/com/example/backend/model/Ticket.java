@@ -27,7 +27,6 @@ public class Ticket {
 
     @ManyToOne
     @JoinColumn(name = "movieplan_id", nullable = false)
-    @JsonBackReference
     private MoviePlan moviePlan;
 
     public MoviePlan getMoviePlan() {

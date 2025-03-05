@@ -7,8 +7,10 @@ import org.springframework.stereotype.Service;
 public class MovieService {
     private final IMovieRepository iMovieRepository;
 
-    @Autowired
     public MovieService(IMovieRepository iMovieRepository) {
         this.iMovieRepository = iMovieRepository;
     }
+
+
+
 }
