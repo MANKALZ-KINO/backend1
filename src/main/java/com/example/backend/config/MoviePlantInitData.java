@@ -13,17 +13,19 @@ import java.util.List;
 @Component
 public class MoviePlantInitData implements CommandLineRunner {
 
-    @Autowired
-    IMoviePlanRepository iMoviePlanRepository;
 
-    @Autowired
-    IMovieRepository iMovieRepository;
+    private final IMoviePlanRepository iMoviePlanRepository;
+    private final IMovieRepository iMovieRepository;
+    private final ITheaterRepository iTheaterRepository;
+    private final ICinemaRepository iCinemaRepository;
 
-    @Autowired
-    ITheaterRepository iTheaterRepository;
+    public MoviePlantInitData(IMoviePlanRepository iMoviePlanRepository, IMovieRepository iMovieRepository, ITheaterRepository iTheaterRepository, ICinemaRepository iCinemaRepository) {
+        this.iMoviePlanRepository = iMoviePlanRepository;
+        this.iMovieRepository = iMovieRepository;
+        this.iTheaterRepository = iTheaterRepository;
+        this.iCinemaRepository = iCinemaRepository;
+    }
 
-    @Autowired
-    ICinemaRepository iCinemaRepository;
 
     @Override
     @Transactional

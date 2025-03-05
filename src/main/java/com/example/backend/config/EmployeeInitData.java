@@ -14,11 +14,14 @@ import java.util.List;
 @Component
 public class EmployeeInitData implements CommandLineRunner {
 
-    @Autowired
-    IEmployeeRepository iEmployeeRepository;
+    private final IEmployeeRepository iEmployeeRepository;
+    private final ICinemaRepository iCinemaRepository;
 
-    @Autowired
-    ICinemaRepository iCinemaRepository;
+    public EmployeeInitData(IEmployeeRepository iEmployeeRepository, ICinemaRepository iCinemaRepository) {
+        this.iEmployeeRepository = iEmployeeRepository;
+        this.iCinemaRepository = iCinemaRepository;
+    }
+
 
     @Override
     @Transactional

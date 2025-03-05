@@ -59,10 +59,4 @@ public class MovieRestController {
             return new ResponseEntity<>(new Movie(), HttpStatus.NOT_FOUND);
         }
     }
-
-
-
-
-
-
 }

@@ -18,14 +18,15 @@ import java.util.Optional;
 @Component
 public class TicketInitData implements CommandLineRunner {
 
-    @Autowired
-    ITicketRepository iTicketRepository;
+    private final ITicketRepository iTicketRepository;
+    private final ISeatRepository iSeatRepository;
+    private final IMoviePlanRepository iMoviePlanRepository;
 
-    @Autowired
-    ISeatRepository iSeatRepository;
-
-    @Autowired
-    IMoviePlanRepository iMoviePlanRepository;
+    public TicketInitData(ITicketRepository iTicketRepository, ISeatRepository iSeatRepository, IMoviePlanRepository iMoviePlanRepository) {
+        this.iTicketRepository = iTicketRepository;
+        this.iSeatRepository = iSeatRepository;
+        this.iMoviePlanRepository = iMoviePlanRepository;
+    }
 
     @Override
     @Transactional

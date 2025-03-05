@@ -1,6 +1,7 @@
 package com.example.backend.config;
 
 import com.example.backend.model.Movie;
+import com.example.backend.repositories.IMoviePlanRepository;
 import com.example.backend.repositories.IMovieRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +13,12 @@ import java.util.List;
 @Component
 public class MovieInitData implements CommandLineRunner {
 
-    @Autowired
-    IMovieRepository iMovieRepository;
+
+    private final IMovieRepository iMovieRepository;
+
+    public MovieInitData(IMovieRepository iMovieRepository) {
+        this.iMovieRepository = iMovieRepository;
+    }
 
     @Override
     @Transactional
