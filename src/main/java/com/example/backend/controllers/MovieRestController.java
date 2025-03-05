@@ -35,10 +35,12 @@ public class MovieRestController {
     public List<Movie> movies() {
         return movieService.findAllMovies();
     }
-    @GetMapping("/movies/{name}")
-    public List<Movie> allMoviesByName(@PathVariable String name) {
-        return movieService.findAllMoviesByName(name);
+
+    @GetMapping("/movies/{id}")
+    public Movie findMovieByID(@PathVariable Long id) {
+        return movieService.findMovieById(id).orElse(null);
     }
+
     //POST
     @PostMapping("/createmovie")
     @ResponseStatus(HttpStatus.CREATED)
