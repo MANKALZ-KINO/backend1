@@ -1,5 +1,6 @@
 package com.example.backend.service;
 
+import com.example.backend.model.MoviePlan;
 import com.example.backend.repositories.IMoviePlanRepository;
 import com.example.backend.repositories.ITicketRepository;
 import org.springframework.beans.factory.annotation.Autowired;

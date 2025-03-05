@@ -18,31 +18,29 @@ import java.util.Optional;
 public class TicketController {
 
     private final TicketService ticketService;
-    private final ITicketRepository ticketRepository;
     private final IMoviePlanRepository moviePlanRepository;
 
-    public TicketController(TicketService ticketService, ITicketRepository ticketRepository, IMoviePlanRepository moviePlanRepository) {
+    public TicketController(TicketService ticketService, IMoviePlanRepository moviePlanRepository) {
         this.ticketService = ticketService;
-        this.ticketRepository = ticketRepository;
         this.moviePlanRepository = moviePlanRepository;
     }
 
     // GET: Hent alle
     @GetMapping("/all")
     public List<Ticket> getAllTickets() {
-        return ticketRepository.findAll();
+        return ticketService.findAllTickets();
     }
 
     @PostMapping("/createTicket")
     @ResponseStatus(HttpStatus.CREATED)
-    public Ticket createTicket(@RequestBody Ticket ticket) {
-        return ticketRepository.save(ticket); //opda
+    public void createTicket(@RequestBody Ticket ticket) {
+        ticketService.createTicket(ticket); //opda
     }
 
     //getticketbyid
     @GetMapping("/{ticketId}")
-    public ResponseEntity<Ticket> findByTicketId(@PathVariable int ticketId) {
-        Optional<Ticket> ticket = ticketRepository.findById(ticketId);
+    public ResponseEntity<Ticket> findByTicketId(@PathVariable Long ticketId) {
+        Optional<Ticket> ticket = ticketService.findTicketById(ticketId);
         return ticket.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
@@ -50,21 +48,21 @@ public class TicketController {
     // UPDATE
     @PutMapping("/update/{ticketId}")
     public ResponseEntity<Ticket> updateTicket(@PathVariable Long ticketId, @RequestBody Ticket updatedTicket) {
-        if (!ticketRepository.existsById(Math.toIntExact(ticketId))) {
+        if (!ticketService.existsById(ticketId)) {
             return ResponseEntity.notFound().build();
         }
         updatedTicket.setTicketID(ticketId);
-        Ticket savedTicket = ticketRepository.save(updatedTicket);
+        Ticket savedTicket = ticketService.saveTicket(updatedTicket);
         return ResponseEntity.ok(savedTicket);
     }
 
     //DELETE via id
     @DeleteMapping("/delete/{ticketId}")
-    public ResponseEntity<String> deleteTicket(@PathVariable int id) {
-        if (!ticketRepository.existsById(id)) {
+    public ResponseEntity<String> deleteTicket(@PathVariable Long id) {
+        if (!ticketService.existsById(id)) {
             return ResponseEntity.notFound().build();
         }
-        ticketRepository.deleteById(id);
+        ticketService.deleById(id);
         return ResponseEntity.ok("Ticket deleted successfully");
     }
 
