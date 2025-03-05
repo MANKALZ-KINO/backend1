@@ -9,11 +9,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class LoginService {
 
-    public LoginService(){
-
+    public LoginService(IEmployeeRepository employeeRepository){
+        this.employeeRepository = employeeRepository;
     }
-    @Autowired
-    private IEmployeeRepository employeeRepository;
+
+    private final IEmployeeRepository employeeRepository;
     private final String PASSWORD = "admin123";
 
 
