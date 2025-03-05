@@ -46,6 +46,5 @@ public class LoginController {
         } else {
             return ResponseEntity.status(401).body("Invalid username or password");
         }
-
     }
 }
