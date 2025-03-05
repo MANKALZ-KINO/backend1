@@ -54,7 +54,7 @@ public class TicketInitData implements CommandLineRunner {
             ticket1.setOrder_date(LocalDate.now());
             ticket1.setTicket_price(120.50);
             ticket1.setPhoneNumber(12345678);
-            ticket1.setSeat(seats.get(0));
+            ticket1.setSeat(seats.get(2));
             ticket1.setMoviePlan(moviePlan);
 
             Ticket ticket2 = new Ticket();
