@@ -35,12 +35,12 @@ public class TheaterInitData implements CommandLineRunner {
 
             Theater smallTheater = new Theater();
             smallTheater.setTheaterName("Small Theater");
-            smallTheater.setCapacity(200);
+            smallTheater.setCapacity(3);
             smallTheater.setCinema(cinema);
 
             Theater largeTheater = new Theater();
             largeTheater.setTheaterName("Large Theater");
-            largeTheater.setCapacity(400);
+            largeTheater.setCapacity(4);
             largeTheater.setCinema(cinema);
 
             iTheaterRepository.saveAll(List.of(smallTheater, largeTheater));
