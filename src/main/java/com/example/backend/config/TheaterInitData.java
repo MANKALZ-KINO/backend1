@@ -14,11 +14,13 @@ import java.util.List;
 @Component
 public class TheaterInitData implements CommandLineRunner {
 
-    @Autowired
-    private ITheaterRepository iTheaterRepository;
+    private final ITheaterRepository iTheaterRepository;
+    private final ICinemaRepository iCinemaRepository;
 
-    @Autowired
-    private ICinemaRepository iCinemaRepository;
+    public TheaterInitData(ITheaterRepository iTheaterRepository, ICinemaRepository iCinemaRepository) {
+        this.iTheaterRepository = iTheaterRepository;
+        this.iCinemaRepository = iCinemaRepository;
+    }
 
     @Override
     @Transactional // Sikrer at alt kører i en transaktion
