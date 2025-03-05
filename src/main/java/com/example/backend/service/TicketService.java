@@ -16,9 +16,21 @@ public class TicketService {
     private final ITicketRepository ticketRepository;
     private final IMoviePlanRepository moviePlanRepository;
 
-    public TicketService(ITicketRepository iTicketRepository, IMoviePlanRepository moviePlanRepository) {
-        this.ticketRepository = iTicketRepository;
+    public TicketService(ITicketRepository ticketRepository, IMoviePlanRepository moviePlanRepository) {
+        this.ticketRepository = ticketRepository;
         this.moviePlanRepository = moviePlanRepository;
     }
+
+    //ved ikke om denne skal bruges
+    public int displayAgeWithinLimit(Ticket ticket) {
+        int ageLimit = ticket.getMoviePlan().getMovie().getAgeLimit();
+        return ageLimit;
+    }
+
+
+    //* public boolean isSeatAvailable(int seatId) {
+    // return ticketRepository.findBySeatID(seatId).isEmpty();
+    //}//*
+
 
 }

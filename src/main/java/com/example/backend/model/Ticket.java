@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 
@@ -28,7 +27,6 @@ public class Ticket {
 
     @ManyToOne
     @JoinColumn(name = "movieplan_id", nullable = false)
-    @JsonBackReference
     private MoviePlan moviePlan;
 
     public MoviePlan getMoviePlan() {
