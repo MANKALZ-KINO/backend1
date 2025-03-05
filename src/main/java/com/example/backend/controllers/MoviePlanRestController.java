@@ -24,7 +24,7 @@ public class MoviePlanRestController {
     public List<MoviePlan> moviePlansWithMovieId(@PathVariable Long id) {
         List<MoviePlan> moviePlanForMovie = new ArrayList<>();
         for (MoviePlan m : iMoviePlanRepository.findAll())
-            if (m.getMovie().getMovieId() == id){
+            if (m.getMovie().getMovieId().equals(id)){
                 moviePlanForMovie.add(m);
             }
         return moviePlanForMovie;

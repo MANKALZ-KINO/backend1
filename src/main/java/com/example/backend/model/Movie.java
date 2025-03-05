@@ -1,6 +1,7 @@
 package com.example.backend.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -18,6 +19,7 @@ public class Movie {
 
 
     @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL, orphanRemoval = true) //orphanremoval betyder at hvis en MoviePlan fjernes fra moviePlans-listen i Movie, slettes den automatisk fra databasen
+    @JsonIgnore
     private List<MoviePlan> moviePlans; //cascade betyder at alle ændringer på Movie også gælder for MoviePlan
 
     public List<MoviePlan> getMoviePlans() {

@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,9 +37,12 @@ public class MovieRestController {
     public List<Movie> movies() {
         return iMovieRepository.findAll();
     }
-    @GetMapping("/movies/{name}") public List<Movie> allMoviesByName(@PathVariable String name) {
-        return iMovieRepository.findAllBymovieName(name);
+    @GetMapping("/movies/{id}")
+    public Movie findMovieByID(@PathVariable Long id) {
+        return iMovieRepository.findById(id).orElse(null);  // Fetch a single movie by ID
     }
+
+
     //POST
     @PostMapping("/createmovie")
     @ResponseStatus(HttpStatus.CREATED)
