@@ -40,12 +40,7 @@ public class MoviePlantInitData implements CommandLineRunner {
             });
 
             // Find eller opret en film
-            Movie movie = iMovieRepository.findById(1L).orElseGet(() -> {
-                Movie newMovie = new Movie();
-                newMovie.setMovieName("Inception");
-                newMovie.setDuration(148);
-                return iMovieRepository.save(newMovie);
-            });
+            Movie movie = iMovieRepository.findById(1L).orElseThrow(() -> new RuntimeException("Movie not found"));
 
             // Find eller opret en biografsal (Theater)
             Theater theater = iTheaterRepository.findById(1L).orElseGet(() -> {
