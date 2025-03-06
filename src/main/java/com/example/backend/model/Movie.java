@@ -15,6 +15,7 @@ public class Movie {
     private String movieName;
     private int ageLimit;
     private int duration;
+    private String imageUrl;
 
 
     @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL, orphanRemoval = true) //orphanremoval betyder at hvis en MoviePlan fjernes fra moviePlans-listen i Movie, slettes den automatisk fra databasen
@@ -67,5 +68,12 @@ public class Movie {
 
     public void setDuration(int duration) {
         this.duration = duration;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }
