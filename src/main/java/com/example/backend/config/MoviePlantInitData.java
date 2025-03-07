@@ -13,20 +13,32 @@ import java.util.List;
 @Component
 public class MoviePlantInitData implements CommandLineRunner {
 
-    @Autowired
-    IMoviePlanRepository iMoviePlanRepository;
 
-    @Autowired
-    IMovieRepository iMovieRepository;
+    private final IMoviePlanRepository iMoviePlanRepository;
+    private final IMovieRepository iMovieRepository;
+    private final ITheaterRepository iTheaterRepository;
+    private final ICinemaRepository iCinemaRepository;
 
-    @Autowired
-    ITheaterRepository iTheaterRepository;
+    public MoviePlantInitData(IMoviePlanRepository iMoviePlanRepository, IMovieRepository iMovieRepository, ITheaterRepository iTheaterRepository, ICinemaRepository iCinemaRepository) {
+        this.iMoviePlanRepository = iMoviePlanRepository;
+        this.iMovieRepository = iMovieRepository;
+        this.iTheaterRepository = iTheaterRepository;
+        this.iCinemaRepository = iCinemaRepository;
+    }
+
 
     @Override
     @Transactional
     public void run(String... args) throws Exception {
         // Undgå dubletter
         if (iMoviePlanRepository.count() == 0) {
+            // Find eller opret en biograf (Cinema)
+            Cinema cinema = iCinemaRepository.findById(1L).orElseGet(() -> {
+                Cinema newCinema = new Cinema();
+                newCinema.setName("City Cinema");  // ✅ Opretter en cinema
+                return iCinemaRepository.save(newCinema);
+            });
+
             // Find eller opret en film
             Movie movie = iMovieRepository.findById(1L).orElseGet(() -> {
                 Movie newMovie = new Movie();
@@ -35,11 +47,12 @@ public class MoviePlantInitData implements CommandLineRunner {
                 return iMovieRepository.save(newMovie);
             });
 
-            // Find eller opret en biografsal
+            // Find eller opret en biografsal (Theater)
             Theater theater = iTheaterRepository.findById(1L).orElseGet(() -> {
                 Theater newTheater = new Theater();
                 newTheater.setTheaterName("Grand Hall");
                 newTheater.setCapacity(250);
+                newTheater.setCinema(cinema);
                 return iTheaterRepository.save(newTheater);
             });
 

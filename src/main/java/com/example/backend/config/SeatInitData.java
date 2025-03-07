@@ -17,14 +17,17 @@ import java.util.List;
 @Component
 public class SeatInitData implements CommandLineRunner {
 
-    @Autowired
-    ISeatRepository iSeatRepository;
-
-    @Autowired
-    ITheaterRepository iTheaterRepository;
 
     @PersistenceContext
     private EntityManager entityManager;
+
+    private final ISeatRepository iSeatRepository;
+    private final ITheaterRepository iTheaterRepository;
+
+    public SeatInitData(ISeatRepository iSeatRepository, ITheaterRepository iTheaterRepository) {
+        this.iSeatRepository = iSeatRepository;
+        this.iTheaterRepository = iTheaterRepository;
+    }
 
     @Override
     @Transactional
