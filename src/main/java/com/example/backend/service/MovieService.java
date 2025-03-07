@@ -31,4 +31,8 @@ public class MovieService {
         return iMovieRepository.findById(movieId);
     }
 
+    public void createMovie(Movie movie) {
+        iMovieRepository.save(movie);
+    }
+
 }
