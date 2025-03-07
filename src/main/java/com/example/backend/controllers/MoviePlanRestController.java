@@ -1,20 +1,19 @@
 package com.example.backend.controllers;
+import com.example.backend.dtos.CreateMoviePlanDto;
 import com.example.backend.model.MoviePlan;
 import com.example.backend.repositories.IMoviePlanRepository;
 import com.example.backend.service.MoviePlanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin("*")
 public class MoviePlanRestController {
 
 
@@ -34,6 +33,16 @@ public class MoviePlanRestController {
             }
         return moviePlanForMovie;
     }
+
+    @RequestMapping(
+        value = "/movieplans",
+        method = RequestMethod.POST,
+        consumes = "text/plain"
+    )
+    public void moviePlansWithMovieId(@RequestBody String body) {
+        System.out.println(body);
+    }
+
     //DELETE
     @DeleteMapping("/movieplan/{id}")
     public ResponseEntity<String> deleteMoviePlan(@PathVariable Long id){
@@ -48,3 +57,4 @@ public class MoviePlanRestController {
 
 
 }
+
