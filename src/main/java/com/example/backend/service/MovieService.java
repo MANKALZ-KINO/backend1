@@ -26,6 +26,7 @@ public class MovieService {
     public void saveMovie(Movie movie) {
         iMovieRepository.save(movie);
     }
+
     public Optional<Movie> findMovieById(Long movieId) {
         return iMovieRepository.findById(movieId);
     }
