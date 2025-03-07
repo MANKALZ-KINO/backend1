@@ -12,7 +12,7 @@ public class MoviePlan {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long moviePlanId;
-    private LocalDate date;
+    private LocalDate movieplanDate;
 
     @Enumerated(EnumType.STRING)
     private ShowNumber showNumber;
@@ -46,12 +46,12 @@ public class MoviePlan {
         this.moviePlanId = moviePlanId;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public LocalDate getMovieplanDate() {
+        return movieplanDate;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setMovieplanDate(LocalDate movieplanDate) {
+        this.movieplanDate = movieplanDate;
     }
 
     public ShowNumber getShowNumber() {

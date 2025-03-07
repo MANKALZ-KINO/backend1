@@ -7,7 +7,6 @@ import com.example.backend.repositories.IMoviePlanRepository;
 import com.example.backend.repositories.ISeatRepository;
 import com.example.backend.repositories.ITicketRepository;
 import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
