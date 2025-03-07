@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -34,11 +35,13 @@ public class MoviePlanRestController {
     @GetMapping("/allseats")
     public List<FreeSeats> getFreeSeats() {
         List<FreeSeats> seats = freeSeatsRepository.findAll();
-
-        // Debug output for at se, hvilke værdier der bliver hentet
-        seats.forEach(seat -> System.out.println("Seat: " + seat.getShowNumber()));
-
         return seats;
+    }
+
+    @GetMapping("/dates")
+    public List<LocalDate> getFreeDates() {
+        List<LocalDate> alldates = moviePlanService.getAllMoviePlanLocalDates();
+        return alldates;
     }
 
 

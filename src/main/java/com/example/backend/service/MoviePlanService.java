@@ -2,10 +2,9 @@ package com.example.backend.service;
 
 import com.example.backend.model.MoviePlan;
 import com.example.backend.repositories.IMoviePlanRepository;
-import com.example.backend.repositories.ITicketRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,6 +21,10 @@ public class MoviePlanService {
     public List<MoviePlan> moviePlansWithMovieId(Long id) {
         return iMoviePlanRepository.findAll();
     }
+    public List<LocalDate> getAllMoviePlanLocalDates() {
+        return iMoviePlanRepository.findAllMoviePlanDates();
+    }
+
 
     public Optional<MoviePlan> movieplans(Long id) {
         return iMoviePlanRepository.findById(id);
