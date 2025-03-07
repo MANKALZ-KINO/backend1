@@ -1,5 +1,7 @@
 package com.example.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -15,15 +17,17 @@ public class MoviePlan {
     @Enumerated(EnumType.STRING)
     private ShowNumber showNumber;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "movie_id", referencedColumnName = "movieId", nullable = false)
     private Movie movie;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "theater_id", referencedColumnName = "theaterId", nullable = false)
+
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn(name = "theater_id", referencedColumnName = "theaterId", nullable = true)
     private Theater theater;
 
-    @OneToMany(mappedBy = "moviePlan", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "moviePlan", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Ticket> tickets;
 
     public List<Ticket> getTickets() {

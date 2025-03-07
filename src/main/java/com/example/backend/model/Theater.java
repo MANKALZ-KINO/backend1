@@ -1,5 +1,6 @@
 package com.example.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -17,6 +18,7 @@ public class Theater {
     @JoinColumn(name = "cinema_id", referencedColumnName = "cinemaId", nullable = false)
     private Cinema cinema;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "theater", cascade = CascadeType.ALL)
     private List<Seat> seats;
 
