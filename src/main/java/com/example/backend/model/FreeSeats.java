@@ -1,6 +1,8 @@
 package com.example.backend.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import org.hibernate.annotations.Immutable;
 import org.hibernate.annotations.Subselect;
@@ -17,7 +19,8 @@ public class FreeSeats {
     private int seatNumb;
     private Long theaterId;
     private Long movieId;
-    private int showNumber;
+    @Enumerated(EnumType.STRING)
+    private ShowNumber showNumber;
     private LocalDate moviePlanDate;
     private Long moviePlanId;
 
@@ -62,11 +65,11 @@ public class FreeSeats {
         this.movieId = movieId;
     }
 
-    public int getShowNumber() {
+    public ShowNumber getShowNumber() {
         return showNumber;
     }
 
-    public void setShowNumber(int showNumber) {
+    public void setShowNumber(ShowNumber showNumber) {
         this.showNumber = showNumber;
     }
 

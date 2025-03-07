@@ -14,8 +14,7 @@ public class MoviePlan {
     private LocalDate moviePlanDate;
 
 
-    @Convert(converter = ShowNumberConverter.class)
-   // @Enumerated(EnumType.STRING)
+   @Enumerated(EnumType.STRING)
     @Column(name = "show_number", nullable = false)
     private ShowNumber showNumber;
 
