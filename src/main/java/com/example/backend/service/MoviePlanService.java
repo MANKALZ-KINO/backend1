@@ -18,7 +18,7 @@ public class MoviePlanService  {
         this.iMoviePlanRepository = iMoviePlanRepository;
     }
 
-    public List<MoviePlan> moviePlansWithMovieId(Long id){
+    public List<MoviePlan> moviePlansWithMovieId(){
        return iMoviePlanRepository.findAll();
    }
 
