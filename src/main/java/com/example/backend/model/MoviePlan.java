@@ -1,6 +1,5 @@
 package com.example.backend.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
@@ -12,9 +11,12 @@ public class MoviePlan {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long moviePlanId;
-    private LocalDate movieplanDate;
+    private LocalDate moviePlanDate;
 
-    @Enumerated(EnumType.STRING)
+
+    @Convert(converter = ShowNumberConverter.class)
+   // @Enumerated(EnumType.STRING)
+    @Column(name = "show_number", nullable = false)
     private ShowNumber showNumber;
 
     @ManyToOne(cascade = CascadeType.MERGE)
@@ -46,12 +48,12 @@ public class MoviePlan {
         this.moviePlanId = moviePlanId;
     }
 
-    public LocalDate getMovieplanDate() {
-        return movieplanDate;
+    public LocalDate getMoviePlanDate() {
+        return moviePlanDate;
     }
 
-    public void setMovieplanDate(LocalDate movieplanDate) {
-        this.movieplanDate = movieplanDate;
+    public void setMoviePlanDate(LocalDate moviePlanDate) {
+        this.moviePlanDate = moviePlanDate;
     }
 
     public ShowNumber getShowNumber() {

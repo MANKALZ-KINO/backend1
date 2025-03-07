@@ -57,19 +57,19 @@ public class MoviePlanInitData implements CommandLineRunner {
 
             // Opret filmvisninger
             MoviePlan moviePlan1 = new MoviePlan();
-            moviePlan1.setMovieplanDate(LocalDate.now());
+            moviePlan1.setMoviePlanDate(LocalDate.now());
             moviePlan1.setShowNumber(ShowNumber.MORNING);
             moviePlan1.setMovie(movie);
             moviePlan1.setTheater(theater);
 
             MoviePlan moviePlan2 = new MoviePlan();
-            moviePlan2.setMovieplanDate(LocalDate.now().plusDays(1));
+            moviePlan2.setMoviePlanDate(LocalDate.now().plusDays(1));
             moviePlan2.setShowNumber(ShowNumber.AFTERNOON);
             moviePlan2.setMovie(movie);
             moviePlan2.setTheater(theater);
 
             MoviePlan moviePlan3 = new MoviePlan();
-            moviePlan3.setMovieplanDate(LocalDate.now().plusDays(2));
+            moviePlan3.setMoviePlanDate(LocalDate.now().plusDays(2));
             moviePlan3.setShowNumber(ShowNumber.NOON);
             moviePlan3.setMovie(movie);
             moviePlan3.setTheater(theater);

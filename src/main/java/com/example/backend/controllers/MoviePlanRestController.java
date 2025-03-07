@@ -33,8 +33,14 @@ public class MoviePlanRestController {
 
     @GetMapping("/allseats")
     public List<FreeSeats> getFreeSeats() {
-        return freeSeatsRepository.findAll();
+        List<FreeSeats> seats = freeSeatsRepository.findAll();
+
+        // Debug output for at se, hvilke værdier der bliver hentet
+        seats.forEach(seat -> System.out.println("Seat: " + seat.getShowNumber()));
+
+        return seats;
     }
+
 
 
     //GET
